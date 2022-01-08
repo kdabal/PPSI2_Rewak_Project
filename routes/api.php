@@ -37,9 +37,9 @@ Route::post('/login', [AuthController::class, 'login']);
     Route::put('/storage/{id}', [StorageController::class, 'update']);
     Route::delete('/storage/{id}', [StorageController::class, 'destroy']);
 
+Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user', [AuthController::class, 'index']);
     Route::post('/logout', [AuthController::class, 'logout']);
-Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
