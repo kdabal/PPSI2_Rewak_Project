@@ -16,6 +16,7 @@ class AuthController extends Controller
             'password' => 'required|string|confirmed'
         ]);
 
+
         $user = User::create([
             'name' => $field['name'],
             'email' => $field['email'],
@@ -23,13 +24,7 @@ class AuthController extends Controller
         ]);
 
         $token = $user->createToken('myapptoken')->plainTextToken;
-
-        $response = [
-            'user' => $user,
-            'token' => $token
-        ];
-
-        return response($response, 201);
+        return response($token, 201);
     }
 
     public function login(Request $request) {
@@ -47,20 +42,12 @@ class AuthController extends Controller
         }
 
         $token = $user->createToken('myapptoken')->plainTextToken;
-
-        $response = [
-            'user' => $user,
-            'token' => $token
-        ];
-
-        return response($response, 201);
+        return response($token, 201);
     }
 
     public function logout(Request $request) {
         auth()->user()->tokens()->delete();
 
-        return [
-            'message' => 'Logged out'
-        ];
+        return ['message' => 'Logged out'];
     }
 }
