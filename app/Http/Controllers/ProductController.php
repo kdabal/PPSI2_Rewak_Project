@@ -26,7 +26,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        return Product::create($request->all());
+        return Product::create($request->all())->toJson();
     }
 
     /**
@@ -51,7 +51,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->update($request->all());
-        return $product;
+        return $product->toJson();
     }
 
     /**

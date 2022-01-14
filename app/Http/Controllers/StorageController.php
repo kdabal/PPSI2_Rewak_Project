@@ -25,7 +25,7 @@ class StorageController extends Controller
      */
     public function store(Request $request)
     {
-        return Storage::create($request->all());
+        return Storage::create($request->all())->toJson();
     }
 
     /**
@@ -36,7 +36,7 @@ class StorageController extends Controller
      */
     public function show($id)
     {
-        return Storage::find($id);
+        return Storage::find($id)->toJson();
     }
 
     /**
@@ -66,6 +66,6 @@ class StorageController extends Controller
 
     public function search($userid)
     {
-        return Storage::where('userid', $userid)->get();
+        return Storage::where('userid', $userid)->get()->toJson();
     }
 }
