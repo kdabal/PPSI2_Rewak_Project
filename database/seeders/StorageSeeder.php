@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
 class StorageSeeder extends Seeder
@@ -20,7 +19,7 @@ class StorageSeeder extends Seeder
                 DB::table('storages')->insert([
                     'userid' => $i+1,
                     'productid' => $j+1,
-                    'count' => Str::random(20)
+                    'count' => rand(1,20)
                 ]);
             }
         }
