@@ -16,11 +16,15 @@ class StorageSeeder extends Seeder
     {
         for($i=0; $i<2; $i++){
             for($j=0; $j<7; $j++){
-                DB::table('storages')->insert([
-                    'userid' => $i+1,
-                    'productid' => $j+1,
-                    'count' => rand(1,20)
-                ]);
+                $value = rand(0,2);
+                if($value == 1)
+                {
+                    DB::table('storages')->insert([
+                        'userid' => $i+1,
+                        'productid' => $j+1,
+                        'count' => rand(1,20)
+                    ]);
+                }
             }
         }
     }
