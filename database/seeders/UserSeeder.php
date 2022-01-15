@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Eloquent\Factories\Factory;
+//use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserSeeder extends Seeder
 {
@@ -25,6 +25,15 @@ class UserSeeder extends Seeder
 //            'password' => Hash::make('admin'),
 //            'remember_token' => Str::random(10),
 //        ]);
-        User::factory()->count(5)->create();
+        for($i=0; $i<10; $i++){
+        DB::table('users')->insert([
+            'username' => 'test'.$i,
+            'email' => 'test'.$i.'@test.pl',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ]);
+        }
+        //User::factory()->count(5)->create();
     }
 }
