@@ -2,26 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Storage;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class StorageController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return string
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Storage::all()->toJson();
-    }
-    public function storage()
-    {
-        //$user = auth()->user('id');
-        $user = Auth::user()->id;
-        return Storage::where('userid', $user)->get()->toJson();
+        return Product::all()->toJson();
     }
 
     /**
@@ -30,9 +23,10 @@ class StorageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        return Storage::create($request->all())->toJson();
+        return Product::create($request->all())->toJson();
     }
 
     /**
@@ -43,7 +37,7 @@ class StorageController extends Controller
      */
     public function show($id)
     {
-        return Storage::find($id)->toJson();
+        return Product::find($id)->toJson();
     }
 
     /**
@@ -55,9 +49,9 @@ class StorageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $storage = Storage::find($id);
-        $storage->update($request->all());
-        return $storage;
+        $product = Product::find($id);
+        $product->update($request->all());
+        return $product->toJson();
     }
 
     /**
@@ -68,11 +62,11 @@ class StorageController extends Controller
      */
     public function destroy($id)
     {
-        return Storage::destroy($id);
+        return Product::destroy($id);
     }
 
-    public function search($userid)
+    public function search($name)
     {
-        return Storage::where('userid', $userid)->get()->toJson();
+        return Product::where('name', 'like', '%'.$name.'%')->get()->toJson();
     }
 }

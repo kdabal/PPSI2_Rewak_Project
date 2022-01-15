@@ -19,7 +19,7 @@ class StorageController extends Controller
     }
     public function storage()
     {
-        //$user = auth()->user('id');
+        $user = auth()->user('id');
         $user = Auth::user()->id;
         return Storage::where('userid', $user)->get()->toJson();
     }

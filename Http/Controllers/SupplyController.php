@@ -2,26 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Storage;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Supply;
 use Illuminate\Http\Request;
 
-class StorageController extends Controller
+class SupplyController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return string
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Storage::all()->toJson();
-    }
-    public function storage()
-    {
-        //$user = auth()->user('id');
-        $user = Auth::user()->id;
-        return Storage::where('userid', $user)->get()->toJson();
+        return Supply::all();
     }
 
     /**
@@ -32,7 +25,7 @@ class StorageController extends Controller
      */
     public function store(Request $request)
     {
-        return Storage::create($request->all())->toJson();
+        return Supply::create($request->all());
     }
 
     /**
@@ -43,7 +36,7 @@ class StorageController extends Controller
      */
     public function show($id)
     {
-        return Storage::find($id)->toJson();
+        return Supply::find($id);
     }
 
     /**
@@ -55,7 +48,7 @@ class StorageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $storage = Storage::find($id);
+        $storage = Supply::find($id);
         $storage->update($request->all());
         return $storage;
     }
@@ -68,11 +61,11 @@ class StorageController extends Controller
      */
     public function destroy($id)
     {
-        return Storage::destroy($id);
+        return Supply::destroy($id);
     }
 
     public function search($userid)
     {
-        return Storage::where('userid', $userid)->get()->toJson();
+        return Supply::where('userid', $userid)->get();
     }
 }
