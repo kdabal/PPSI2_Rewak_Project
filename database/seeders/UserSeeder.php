@@ -18,22 +18,20 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-//        DB::table('users')->insert([
-//            'username' => 'admin',
-//            'email' => 'admin@admin.pl',
-//            'email_verified_at' => now(),
-//            'password' => Hash::make('admin'),
-//            'remember_token' => Str::random(10),
-//        ]);
-        for($i=0; $i<10; $i++){
         DB::table('users')->insert([
-            'username' => 'test'.$i,
-            'email' => 'test'.$i.'@test.pl',
+            'username' => 'admin',
+            'email' => 'admin@admin.pl',
+            'email_verified_at' => now(),
+            'password' => Hash::make('admin'),
+            'remember_token' => Str::random(10),
+        ]);
+        DB::table('users')->insert([
+            'username' => 'test',
+            'email' => 'test@test.pl',
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
         ]);
-        }
         //User::factory()->count(5)->create();
     }
 }
