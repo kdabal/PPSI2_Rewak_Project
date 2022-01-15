@@ -17,7 +17,9 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->integer('shelf_life');
+            $table->string('type');
+            $table->string('img');
+            $table->string('description');
             $table->timestamps();
         });
     }

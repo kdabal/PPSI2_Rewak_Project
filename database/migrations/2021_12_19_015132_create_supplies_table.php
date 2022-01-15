@@ -18,7 +18,7 @@ class CreateSuppliesTable extends Migration
             $table->integer('userid');
             $table->integer('productid');
             $table->integer('count')->nullable();
-            $table->date('date_sl')->nullable();
+            $table->date('shelf_life')->nullable();
             $table->timestamps();
         });
     }

@@ -12,6 +12,6 @@ class Supply extends Model
         'userid',
         'productid',
         'count',
-        'date_sl'
+        'shelf_life'
     ];
 }
