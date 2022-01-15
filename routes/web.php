@@ -16,7 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/api', function () {
-    //return view('index');
-    return \File::get(public_path() . '/index.html');
-});
+//Route::get('/api', function () {return \File::get(public_path() . '/index.html');});
