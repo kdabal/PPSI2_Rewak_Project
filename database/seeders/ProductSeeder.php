@@ -56,7 +56,7 @@ class ProductSeeder extends Seeder
             'name' => 'Chmiel Izabella',
             'slug' => 'chmniel-izabella',
             'type' => 'chmiel',
-            'img' => 'https://storgeapp.herokuapp.com/images/chmniel-izabella.jpg',
+            'img' => 'https://storgeapp.herokuapp.com/images/chmiel-izabella.jpg',
             'description' => 'Izabella, polska odmiana chmielu, będąca krzyżówką chmielu Lubelskiego z dzikim chmielem rosnącym na Bałkanach. Chmiel o żywicznym sosnowym aromacie, z nutami cytryny i mirabelki. Cechuje się przyjemną, niezalegającą goryczką.'
         ]);
         DB::table('products')->insert([
