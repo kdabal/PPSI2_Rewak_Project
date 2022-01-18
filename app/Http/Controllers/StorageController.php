@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Storage;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StorageController extends Controller
 {
@@ -19,9 +19,12 @@ class StorageController extends Controller
     }
     public function storage()
     {
-        //$user = auth()->user('id');
-        $user = Auth::user()->id;
-        return Storage::where('userid', $user)->get()->toJson();
+        $userid = Auth::user()->id;
+        $storage = DB::table('storages')
+            ->where('userid', $userid)
+            ->get()
+            ->toJson();
+        return $storage;
     }
 
     /**

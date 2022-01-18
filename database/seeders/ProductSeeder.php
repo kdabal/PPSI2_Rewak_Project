@@ -37,7 +37,7 @@ class ProductSeeder extends Seeder
             'description' => 'Słód Red Ale to aromatyczny słód bogaty w melanoidyny. Używany do bursztynowych i ciemnych piw, aby poprawić kolor i aromat.(...)'
         ]);
         DB::table('products')->insert([
-            'name' => 'Palone-Ziarno-Jęczmienia',
+            'name' => 'Palone Ziarno Jęczmienia',
             'slug' => 'palone-ziarno-jeczmienia',
             'type' => 'słód',
             'img' => 'https://storgeapp.herokuapp.com/images/palone-ziarno-jeczmienia.jpg',
@@ -60,7 +60,7 @@ class ProductSeeder extends Seeder
             'description' => 'Izabella, polska odmiana chmielu, będąca krzyżówką chmielu Lubelskiego z dzikim chmielem rosnącym na Bałkanach. Chmiel o żywicznym sosnowym aromacie, z nutami cytryny i mirabelki. Cechuje się przyjemną, niezalegającą goryczką.'
         ]);
         DB::table('products')->insert([
-            'name' => 'Chmiel,Simicoe',
+            'name' => 'Chmiel Simicoe',
             'slug' => 'chmiel-simicoe',
             'type' => 'chmiel',
             'img' => 'https://storgeapp.herokuapp.com/images/chmiel-simicoe.jpg',

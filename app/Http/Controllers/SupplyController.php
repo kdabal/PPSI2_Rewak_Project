@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Supply;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Events\SupplyCreated;
 
 class SupplyController extends Controller
 {
@@ -12,11 +15,32 @@ class SupplyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        return Supply::all();
+        return Supply::all()->toJson();
     }
+    public function supply()
+    {
+        $user = Auth::user()->id;
+        $supply = DB::table('supplies')
+            ->where('userid', $user)
+            ->get()
+            ->toJson();
+        return $supply;
+    }
+    public function showSupply($productid)
+    {
+        $user = Auth::user()->id;
+        $supply = DB::table('supplies')
+            ->where('userid', $user)
+            ->where('productid', $productid)
+            ->orderBy('shelf_life')
+            ->get()
+            ->toJson();
+        return $supply;
 
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -25,7 +49,11 @@ class SupplyController extends Controller
      */
     public function store(Request $request)
     {
-        return Supply::create($request->all());
+        $this->eventSupplyCreated($request);
+        return Supply::create($request->all())->toJson();
+    }
+    public function eventSupplyCreated(Request $request){
+        event(new SupplyCreated($request));
     }
 
     /**
@@ -36,7 +64,7 @@ class SupplyController extends Controller
      */
     public function show($id)
     {
-        return Supply::find($id);
+        return Supply::find($id)->toJson();
     }
 
     /**
@@ -50,7 +78,7 @@ class SupplyController extends Controller
     {
         $storage = Supply::find($id);
         $storage->update($request->all());
-        return $storage;
+        return $storage->toJson();
     }
 
     /**
@@ -66,6 +94,7 @@ class SupplyController extends Controller
 
     public function search($userid)
     {
-        return Supply::where('userid', $userid)->get();
+        $supply = Supply::where('userid', $userid)->get()->toJson();
+        return $supply;
     }
 }
